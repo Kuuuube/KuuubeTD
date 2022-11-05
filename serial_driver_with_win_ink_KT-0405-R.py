@@ -108,15 +108,9 @@ class WacomSerialTablet(Tablet):
         # configure tablet + enable tilt (FM1)
         #serial_port.write(b'MU1\rOC1\r~M0\r~M1\r~IT0\rFM1\r')
 
-        # ascii mode test
-        #serial_port.write(b'AS0\r')
-
-        #serial_port.write(b'NR2540\r')
-
         # format: "~R{setting_body},{increment},{interval},{res_x},{res_y}\r"
         # example: "~RE202C900,002,02,1270,1270\r"
         try:
-            #serial_port.write("#".encode())
             serial_port.write(f'{WACOM_COMMAND_GET_CONFIG}\r'.encode())
             config = (
                 serial_port.readline()
@@ -227,17 +221,6 @@ class WacomSerialTablet(Tablet):
                 if self.serial_buffer_packet_index == 7:
                     self.parse_wacom_iv_packet()
 
-        # # wait until sync bit arrives
-        # while(1):
-        #     self.serial_buffer = self.serial_port.read()
-        #     if len(self.serial_buffer) > 0:
-        #         if int.from_bytes(self.serial_buffer[0:1], byteorder='big') & 0x80:
-        #             break
-
-        # # read next 8 bytes
-        # for i in range(8):
-        #     self.serial_buffer = self.serial_buffer + self.serial_port.read()
-
 def send_report_packet_to_driver(tablet):
     report_buffer = [0xFF]*65
     button_flags = 0  # bitwise
@@ -301,7 +284,7 @@ try:
 
     while(1):
         tablet.read_input_data()
-        time.sleep(0.01)
+        #time.sleep(0.01)
 
 finally:
     serial_port.close()
