@@ -1,1 +1,3 @@
-# serial_wacom_tools
+# Serial Wacom Tools
+
+Documentation will be added soon.
