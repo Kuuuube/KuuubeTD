@@ -240,7 +240,6 @@ def send_report_packet_to_driver(tablet):
 
 virtual_device = None
 report = None
-skipclose = False
 
 # Product and Vendor ID should correspond to the Virtual Multitouch Device driver
 all_devices = hid.HidDeviceFilter(
