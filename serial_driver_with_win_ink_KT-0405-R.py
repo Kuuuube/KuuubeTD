@@ -10,6 +10,8 @@ VIRTUAL_MULTITOUCH_ID = 0x40
 VIRTUAL_MULTITOUCH_REPORT_ID_WINDOWSINK = 0x05
 VIRTUAL_MULTITOUCH_REPORT_ID_ABSOLUTE_POINTER = 0x09
 
+OUTPUT_MODE = VIRTUAL_MULTITOUCH_REPORT_ID_WINDOWSINK #VIRTUAL_MULTITOUCH_REPORT_ID_WINDOWSINK or VIRTUAL_MULTITOUCH_REPORT_ID_ABSOLUTE_POINTER
+
 WACOM_COMMAND_GET_TABLET_MODEL = '~#'
 WACOM_COMMAND_SELF_TEST = 'TE'
 WACOM_COMMAND_GET_CONFIG = '~R'
@@ -25,6 +27,8 @@ MAPPED_MONITOR_RES_X = 1920
 MAPPED_MONITOR_RES_Y = 1080
 OFFSET_X = 0
 OFFSET_Y = 0
+
+SERIAL_PORT_PATH = 'COM3'
 
 DEBUG_PRINTING = False
 
@@ -44,8 +48,6 @@ class Tablet:
     pos_x: int      = 0  # current x position
     pos_y: int      = 0  # current y position
     pressure: int   = 0  # current pressure
-    #tilt_x: int     = 0  # tilt in the x axis
-    #tilt_y: int     = 0  # tilt in the y axis
 
     def set_position(self, pos_x:int, pos_y:int):
         self.pos_x_old = self.pos_x
@@ -57,16 +59,12 @@ class Tablet:
     def set_pressure(self, pressure):
         self.pressure = pressure
 
-    #def set_tilt(self, tilt_x:int, tilt_y:int):
-    #    self.tilt_x = tilt_x
-    #    self.tilt_y = tilt_y
-
 class WacomSerialTablet(Tablet):
     serial_port: serial.Serial = None
     serial_buffer: bytearray = bytearray(1000)  # this gives us approximately a 1 second buffer at 9600 baud
     serial_buffer_write_index: int = 0          # index of buffer to be written
     serial_buffer_read_index: int = 0           # index of buffer to be read for parsing
-    serial_buffer_packet: bytearray = bytearray(9)          # bytearray to hold a single packet
+    serial_buffer_packet: bytearray = bytearray(7)          # bytearray to hold a single packet
     serial_buffer_packet_index: int = 0
 
     tablet_model: str = None
@@ -77,58 +75,59 @@ class WacomSerialTablet(Tablet):
         print("Setting up tablet, please wait. Do not put the pen on the tablet.")
         self.serial_port = serial_port
 
-        # query tablet for model and ROM version
-        serial_port.write(f'{WACOM_COMMAND_GET_TABLET_MODEL}\r'.encode())
-
-        # format: "~#{tablet_model} {rom_version}\r"
-        # example: "~#UD-1212-R00 V1.5-4\r"
-        try:
-            model_and_rom_version = (
-                serial_port.readline()
-                .decode('utf-8')
-                .replace(WACOM_COMMAND_GET_TABLET_MODEL, '')
-                .replace('\r', '')
-                .split(' ')
-            )
-            self.tablet_model = model_and_rom_version[0]
-            self.rom_version = model_and_rom_version[1]
-            if (DEBUG_PRINTING):
-                print(f'Wacom Tablet Model: {self.tablet_model}')
-                print(f'Wacom ROM Version: {self.rom_version}')
-        except Exception:
-            print("Failed to get tablet model. Restart the program and do not put your pen on the tablet until setup is finished.")
-
         if (DEBUG_PRINTING):
             print('Resetting tablet to Wacom IV command set...')
+
         serial_port.write(f'{WACOM_COMMAND_RESET_WACOM_IV}\r'.encode())
-        # after resetting, tablet does not accept input for at least 10ms,
-        # so we wait for 200ms
-        time.sleep(0.2)
 
-        # configure tablet + enable tilt (FM1)
-        #serial_port.write(b'MU1\rOC1\r~M0\r~M1\r~IT0\rFM1\r')
+        if (DEBUG_PRINTING):
+            # query tablet for model and ROM version
+            serial_port.write(f'{WACOM_COMMAND_GET_TABLET_MODEL}\r'.encode())
 
-        # format: "~R{setting_body},{increment},{interval},{res_x},{res_y}\r"
-        # example: "~RE202C900,002,02,1270,1270\r"
-        try:
-            serial_port.write(f'{WACOM_COMMAND_GET_CONFIG}\r'.encode())
-            config = (
-                serial_port.readline()
-                .decode('utf-8')
-                .replace(WACOM_COMMAND_GET_CONFIG, '')
-                .replace('\r', '')
-                .split(',')
-            )
-            if (DEBUG_PRINTING):
-                print(config[0])
-                print(config[1])
-                print(config[2])
-                self.res_x = config[3]
-                self.res_y = config[4]
-                print(f'X Resolution: {self.res_x}, Y Resoluiton: {self.res_y}')
-            print("Tablet ready for use.")
-        except Exception:
-            print("Failed to get resolution. Restart the program and do not put your pen on the tablet until setup is finished.")
+            # format: "~#{tablet_model} {rom_version}\r"
+            # example: "~#UD-1212-R00 V1.5-4\r"
+            try:
+                # after resetting, tablet does not accept input for at least 10ms,
+                # so we wait for 200ms
+                time.sleep(0.2)
+                
+                model_and_rom_version = (
+                    serial_port.readline()
+                    .decode('utf-8')
+                    .replace(WACOM_COMMAND_GET_TABLET_MODEL, '')
+                    .replace('\r', '')
+                    .split(' ')
+                )
+                self.tablet_model = model_and_rom_version[0]
+                self.rom_version = model_and_rom_version[1]
+                print(f'Wacom Tablet Model: {self.tablet_model}')
+                print(f'Wacom ROM Version: {self.rom_version}')
+            except Exception:
+                print("Failed to get tablet model. Restart the program and do not put your pen on the tablet until setup is finished.")
+
+        if(DEBUG_PRINTING):
+            # format: "~R{setting_body},{increment},{interval},{res_x},{res_y}\r"
+            # example: "~RE202C900,002,02,1270,1270\r"
+            try:
+                serial_port.write(f'{WACOM_COMMAND_GET_CONFIG}\r'.encode())
+                config = (
+                    serial_port.readline()
+                    .decode('utf-8')
+                    .replace(WACOM_COMMAND_GET_CONFIG, '')
+                    .replace('\r', '')
+                    .split(',')
+                )
+                if (DEBUG_PRINTING):
+                    print(config[0])
+                    print(config[1])
+                    print(config[2])
+                    self.res_x = config[3]
+                    self.res_y = config[4]
+                    print(f'X Resolution: {self.res_x}, Y Resoluiton: {self.res_y}')
+            except Exception:
+                print("Failed to get resolution. Restart the program and do not put your pen on the tablet until setup is finished.")
+
+        print("Tablet setup finished.")
 
     def parse_wacom_iv_packet(self):
         int.from_bytes(self.serial_buffer_packet[0:1], byteorder='big')
@@ -155,15 +154,6 @@ class WacomSerialTablet(Tablet):
 
         pressure = pressure + 127
 
-        #tilt_x = int.from_bytes(self.serial_buffer_packet[7:8], byteorder='big') & 0x7f
-        #tilt_y = int.from_bytes(self.serial_buffer_packet[8:9], byteorder='big') & 0x7f
-
-        #if (int.from_bytes(self.serial_buffer_packet[7:8], byteorder='big') & 0x40):
-        #    tilt_x = (~(tilt_x - 1) & 0x7f) * -1
-
-        #if (int.from_bytes(self.serial_buffer_packet[8:9], byteorder='big') & 0x40):
-        #    tilt_y = (~(tilt_y - 1) & 0x7f) * -1
-
         # whether or not a button has been pressed
         button_pressed = bool(int.from_bytes(self.serial_buffer_packet[0:1], byteorder='big') & 0x08)
 
@@ -173,7 +163,6 @@ class WacomSerialTablet(Tablet):
 
         self.set_position(pos_x, pos_y)
         self.set_pressure(pressure)
-        #self.set_tilt(tilt_x, tilt_y)
         self.proximity = proximity
         self.press = button == 1
 
@@ -228,10 +217,10 @@ def send_report_packet_to_driver(tablet):
 
     button_flags = set_bit(button_flags, 0) if tablet.press else unset_bit(button_flags, 0)
     button_flags = set_bit(button_flags, 4) if tablet.proximity else unset_bit(button_flags, 4)
-    scaled_pressure = tablet.pressure * 32
+
     report_buffer[0] = VIRTUAL_MULTITOUCH_ID
     report_buffer[1] = 12
-    report_buffer[2] = VIRTUAL_MULTITOUCH_REPORT_ID_WINDOWSINK
+    report_buffer[2] = OUTPUT_MODE
     report_buffer[3] = button_flags  # button bits
 
     scaled_pos_x = int(((32767 / TABLET_MAX_X_POS) * tablet.pos_x) * ((MAPPED_MONITOR_RES_X + OFFSET_X) / ALL_MONITORS_RES_X)) # scales x pos for vmulti, 32767 is the max pos value for vmulti
@@ -242,16 +231,16 @@ def send_report_packet_to_driver(tablet):
     report_buffer[6] = scaled_pos_y & 0xFF  # lower 8 bits of Y value
     report_buffer[7] = (scaled_pos_y & 0xFF00) >> 8  # upper 8 bits of Y value
 
+    scaled_pressure = tablet.pressure * 32
     report_buffer[8] = scaled_pressure & 0xFF  # lower 8 bits of pressure
     report_buffer[9] = (scaled_pressure & 0xFF00) >> 8  # upper 8 bits of pressure
 
-    #report_buffer[10] = tablet.tilt_x * 2  # tilt x
-    #report_buffer[11] = tablet.tilt_y * 2  # tilt y
     report.set_raw_data(report_buffer)
     report.send()
 
 virtual_device = None
 report = None
+skipclose = False
 
 # Product and Vendor ID should correspond to the Virtual Multitouch Device driver
 all_devices = hid.HidDeviceFilter(
@@ -269,11 +258,11 @@ else:
 try:
     virtual_device.open()
     serial_port = serial.Serial(
-        port="COM3",
-        baudrate=9600,
-        bytesize=8,
-        timeout=2,
-        stopbits=serial.STOPBITS_ONE,
+        port = SERIAL_PORT_PATH,
+        baudrate = 9600,
+        bytesize = 8,
+        timeout = 2,
+        stopbits = serial.STOPBITS_ONE,
 
     )
 
@@ -282,10 +271,9 @@ try:
     reports = virtual_device.find_output_reports()
     report = reports[-1]
 
-    while(1):
+    while(True):
         tablet.read_input_data()
-        #time.sleep(0.01)
+        time.sleep(0.0001) #this avoids taking a lot of cpu but can end up reducing the report rate if timer resolution isnt very high
 
-finally:
-    serial_port.close()
-    virtual_device.close()
+except serial.SerialException as e:
+    print (f"Serial connection failed. Make sure no other programs have {SERIAL_PORT_PATH} opened.")
