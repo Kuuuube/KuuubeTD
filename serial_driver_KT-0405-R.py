@@ -18,8 +18,8 @@ WACOM_COMMAND_GET_CONFIG = '~R'
 WACOM_COMMAND_GET_MAX_COORD = '~C'
 WACOM_COMMAND_RESET_WACOM_IV = '#'
 
-TABLET_MAX_X_POS = 6400
-TABLET_MAX_Y_POS = 4800
+TABLET_MAX_X_POS = 12800
+TABLET_MAX_Y_POS = 9600
 
 ALL_MONITORS_RES_X = 3840
 ALL_MONITORS_RES_Y = 1080
@@ -78,19 +78,20 @@ class WacomSerialTablet(Tablet):
         if (DEBUG_PRINTING):
             print('Resetting tablet to Wacom IV command set...')
 
-        serial_port.write(f'{WACOM_COMMAND_RESET_WACOM_IV}\r'.encode())
+        serial_port.write(f'{WACOM_COMMAND_RESET_WACOM_IV}\r'.encode()) # ensures the tablet is in the correct mode
+        time.sleep(0.1)
+        serial_port.write(f'NR2540\r'.encode()) # sets the tablet to use 2540 LPI (lines per inch)
+        time.sleep(0.1)
+        serial_port.write(f'IT0\r'.encode()) # sets the tablet to use the maximum RPS (reports per second) for the current baud rate
 
         if (DEBUG_PRINTING):
+            time.sleep(0.1)
             # query tablet for model and ROM version
             serial_port.write(f'{WACOM_COMMAND_GET_TABLET_MODEL}\r'.encode())
 
             # format: "~#{tablet_model} {rom_version}\r"
             # example: "~#UD-1212-R00 V1.5-4\r"
-            try:
-                # after resetting, tablet does not accept input for at least 10ms,
-                # so we wait for 200ms
-                time.sleep(0.2)
-                
+            try:                
                 model_and_rom_version = (
                     serial_port.readline()
                     .decode('utf-8')
@@ -123,7 +124,7 @@ class WacomSerialTablet(Tablet):
                     print(config[2])
                     self.res_x = config[3]
                     self.res_y = config[4]
-                    print(f'X Resolution: {self.res_x}, Y Resoluiton: {self.res_y}')
+                    print(f'X Resolution: {self.res_x}, Y Resolution: {self.res_y}')
             except Exception:
                 print("Failed to get resolution. Restart the program and do not put your pen on the tablet until setup is finished.")
 
@@ -272,7 +273,7 @@ try:
 
     while(True):
         tablet.read_input_data()
-        time.sleep(0.0001) #this avoids taking a lot of cpu but can end up reducing the report rate if timer resolution isnt very high
+        time.sleep(0.0001) # this avoids taking a lot of cpu but can end up reducing the report rate if timer resolution isnt very high
 
 except serial.SerialException as e:
     print (f"Serial connection failed. Make sure no other programs have {SERIAL_PORT_PATH} opened.")
