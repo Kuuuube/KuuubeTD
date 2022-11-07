@@ -79,19 +79,21 @@ class WacomSerialTablet(Tablet):
             print('Resetting tablet to Wacom IV command set...')
 
         serial_port.write(f'{WACOM_COMMAND_RESET_WACOM_IV}\r'.encode()) # ensures the tablet is in the correct mode
-        time.sleep(0.1)
+        time.sleep(0.2)
+        serial_port.write(f'~*F233C900\r'.encode()) # Sets the baud rate to 19200, resolution to 1270 LPI (lines per inch), enables maximum RPS (reports per second) for the current baud rate, disables coordinate interval requirements. Convert to binary and reference wacom progman appendix B for more information.
+        time.sleep(0.2)
+        self.serial_port.baudrate = 19200
+        time.sleep(0.2)
         serial_port.write(f'NR2540\r'.encode()) # sets the tablet to use 2540 LPI (lines per inch)
-        time.sleep(0.1)
-        serial_port.write(f'IT0\r'.encode()) # sets the tablet to use the maximum RPS (reports per second) for the current baud rate
 
         if (DEBUG_PRINTING):
-            time.sleep(0.1)
+            time.sleep(0.2)
             # query tablet for model and ROM version
             serial_port.write(f'{WACOM_COMMAND_GET_TABLET_MODEL}\r'.encode())
 
             # format: "~#{tablet_model} {rom_version}\r"
             # example: "~#UD-1212-R00 V1.5-4\r"
-            try:                
+            try:
                 model_and_rom_version = (
                     serial_port.readline()
                     .decode('utf-8')
@@ -114,17 +116,16 @@ class WacomSerialTablet(Tablet):
                 config = (
                     serial_port.readline()
                     .decode('utf-8')
-                    .replace(WACOM_COMMAND_GET_CONFIG, '')
+                    .replace(WACOM_COMMAND_GET_CONFIG, '') # removes the header from the response
                     .replace('\r', '')
                     .split(',')
                 )
                 if (DEBUG_PRINTING):
-                    print(config[0])
-                    print(config[1])
-                    print(config[2])
-                    self.res_x = config[3]
-                    self.res_y = config[4]
-                    print(f'X Resolution: {self.res_x}, Y Resolution: {self.res_y}')
+                    print("Setting Body: " + config[0])
+                    print("Increment: " + config[1])
+                    print("Interval: " + config[2])
+                    print("X Resolution: " + config[3])
+                    print("Y Resolution: " + config[4])
             except Exception:
                 print("Failed to get resolution. Restart the program and do not put your pen on the tablet until setup is finished.")
 
@@ -244,8 +245,8 @@ report = None
 
 # Product and Vendor ID should correspond to the Virtual Multitouch Device driver
 all_devices = hid.HidDeviceFilter(
-    vendor_id=VIRTUAL_MULTITOUCH_DEVICE_VENDOR_ID,
-    product_id=VIRTUAL_MULTITOUCH_DEVICE_PRODUCT_ID,
+    vendor_id = VIRTUAL_MULTITOUCH_DEVICE_VENDOR_ID,
+    product_id = VIRTUAL_MULTITOUCH_DEVICE_PRODUCT_ID,
 ).get_devices()
 
 if len(all_devices) > 0:
@@ -274,6 +275,7 @@ try:
     while(True):
         tablet.read_input_data()
         time.sleep(0.0001) # this avoids taking a lot of cpu but can end up reducing the report rate if timer resolution isnt very high
+
 
 except serial.SerialException as e:
     print (f"Serial connection failed. Make sure no other programs have {SERIAL_PORT_PATH} opened.")
