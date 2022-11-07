@@ -2,7 +2,7 @@
 
 ## Proper documentation will be added soon.
 
-`serial_driver_with_win_ink_KT-0405-R.py` has been tested only on KT-0405-R with rom version 1.3-2.
+`serial_driver_KT-0405-R.py` has been tested only on KT-0405-R with rom version 1.3-2.
 
 For proper monitor mapping change the following variables to what they should be for your setup: `ALL_MONITORS_RES_X`, `ALL_MONITORS_RES_Y`, `MAPPED_MONITOR_RES_X`, `MAPPED_MONITOR_RES_Y`, `OFFSET_X`, `OFFSET_Y`. 
 
