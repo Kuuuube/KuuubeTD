@@ -2,7 +2,7 @@
 
 ### Proper documentation will be added soon.
 
-`KT-0405-R/KT_0405_R_driver.py` has been tested only on KT-0405-R with rom version 1.3-2. To find your tablet's rom version run `wacom_serial_tablet_diagnostics.py`.
+`KT-0405-R/KT_0405_R_driver.py` has been tested only on KT-0405-R with rom version 1.3-2. To find your tablet's rom version run `wacom_serial_tablet_diagnostics.py` (make sure to set your serial port path).
 
 Install vmulti from `vmulti_driver.zip`. (Extract and run `install_hiddriver.bat` as admin)
 
