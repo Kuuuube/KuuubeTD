@@ -4,7 +4,7 @@ import constants
 report_buffer = [0x00]*65
 
 def find_device():
-    all_devices = hid.HidDeviceFilter(vendor_id = constants.VIRTUAL_MULTITOUCH_DEVICE_VENDOR_ID, product_id = constants.VIRTUAL_MULTITOUCH_DEVICE_PRODUCT_ID,).get_devices()
+    all_devices = hid.HidDeviceFilter(vendor_id = constants.VMULTI_DEVICE_VENDOR_ID, product_id = constants.VMULTI_DEVICE_PRODUCT_ID,).get_devices()
 
     if len(all_devices) > 0:
         virtual_device = all_devices[-1]
@@ -19,7 +19,7 @@ def send_report(report, pos_x, pos_y, pressure, press, proximity):
     button_flags = set_bit(button_flags, 0) if press else unset_bit(button_flags, 0)
     button_flags = set_bit(button_flags, 4) if proximity else unset_bit(button_flags, 4)
 
-    report_buffer[0] = constants.VIRTUAL_MULTITOUCH_ID
+    report_buffer[0] = constants.VMULTI_ID
     report_buffer[1] = 12
     report_buffer[2] = constants.OUTPUT_MODE
     report_buffer[3] = button_flags
