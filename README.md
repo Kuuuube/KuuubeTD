@@ -1,4 +1,6 @@
-# Serial Wacom Tools
+# KuuubeTD
+
+Kuuube Tablet Driver, a driver for serial Wacom tablets.
 
 ### Proper documentation will be added soon.
 
