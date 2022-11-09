@@ -27,9 +27,8 @@ def setup():
 
 def read_data(serial_port):
     report = bytes(b"")
-    while (report == b""):
-        report = serial_port.read(7)
+    while (len(report) != (constants.SERIAL_PORT_BYTESIZE - constants.SERIAL_PORT_STOPBITS)):
+        report = serial_port.read(constants.SERIAL_PORT_BYTESIZE - constants.SERIAL_PORT_STOPBITS)
 
-    print(report)
     report_parsed = KT_0405_R_parser.parse(report)
     return report_parsed

@@ -1,13 +1,11 @@
 def parse(report):
-    int.from_bytes(report[0:1], byteorder='big')
-
-    pos_x: int = (
+    pos_x = (
         ((int.from_bytes(report[0:1], byteorder='big') & 0x03) << 14)
         + (int.from_bytes(report[1:2], byteorder='big') << 7)
         + int.from_bytes(report[2:3], byteorder='big')
     )
 
-    pos_y: int = (
+    pos_y = (
         ((int.from_bytes(report[3:4], byteorder='big') & 0x03) << 14)
         + (int.from_bytes(report[4:5], byteorder='big') << 7)
         + int.from_bytes(report[5:6], byteorder='big')
