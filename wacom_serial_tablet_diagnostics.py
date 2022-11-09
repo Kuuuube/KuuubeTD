@@ -24,3 +24,6 @@ for baud_rate in baud_rates:
     send_command("~#", "Tablet ID")
     send_command("~R", "Read Setting")
     send_command("~C", "Tablet Size")
+
+print("Finished")
+input()
