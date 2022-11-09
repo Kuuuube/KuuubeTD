@@ -1,32 +1,21 @@
 def parse(report):
-    pos_x = (
-        ((int.from_bytes(report[0:1], byteorder='big') & 0x03) << 14)
-        + (int.from_bytes(report[1:2], byteorder='big') << 7)
-        + int.from_bytes(report[2:3], byteorder='big')
-    )
+    pos_x = (((int(report[0]) & 0x03) << 14) + (int(report[1]) << 7) + int(report[2]))
 
-    pos_y = (
-        ((int.from_bytes(report[3:4], byteorder='big') & 0x03) << 14)
-        + (int.from_bytes(report[4:5], byteorder='big') << 7)
-        + int.from_bytes(report[5:6], byteorder='big')
-    )
+    pos_y = (((int(report[3]) & 0x03) << 14) + (int(report[4]) << 7) + int(report[5]))
 
-    pressure = (
-        ((int.from_bytes(report[6:7], byteorder='big') & 0x7f) * 2)
-        + ((int.from_bytes(report[3:4], byteorder='big') & 0x04) >> 2)
-    )
+    pressure = (((int(report[6]) & 0x7f) * 2) + ((int(report[3]) & 0x04) >> 2))
 
-    if (int.from_bytes(report[6:7], byteorder='big') & 0x40):
+    if (int(report[6]) & 0x40):
         pressure = (~(pressure - 1) & 0x7f) * -1
 
     pressure = pressure + 127
 
-    button_pressed = bool(int.from_bytes(report[0:1], byteorder='big') & 0x08)
+    button_pressed = bool(int(report[0]) & 0x08)
 
-    proximity = bool(int.from_bytes(report[0:1], byteorder='big') & 0x40)
+    proximity = bool(int(report[0]) & 0x40)
 
-    button = int.from_bytes(report[3:4], byteorder='big') >> 3 if button_pressed else 0
+    button = int(report[3]) >> 3 if button_pressed else 0
 
-    press = button == 1
+    pen_tip_press = bool(button & 0x01)
 
-    return (pos_x, pos_y, pressure, press, proximity)
+    return (pos_x, pos_y, pressure, pen_tip_press, proximity)
