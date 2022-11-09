@@ -18,8 +18,54 @@ Custom tablet areas are not yet supported. You can somewhat add a custom area by
 
 ## KT-0405-R
 
-### Settings applied by the driver
+### Settings applied by the driver:
 
 Hex: `F233C900` Binary: `11110010001100111100100100000000`
 
-`11` command set: WACOM IV, `11` baud rate: 19200, `00` parity: none, `1` data length: 8 bits, `0` stop bits: 1 stop bit, `00` CTS/DSR: none, `11` data transfer mode: stream, `0` output format: binary, `0` coordinate system: absolute, `11` transfer rate: maximum, `11` resolution: 1270 lpi, `0` origin location: upper left, `0` out-of-range data: no, `10` terminator: carriage return + line feed, `0` not used, `1` PnP: on, `0` pressure sensitivity: firm, `0` reading height: high, `0` multi device mode: disabled, `0` tilt mode: off, `0` MM command set: MM1201, `0` MM961 orientation: landscape, `0` BitPad II cursor data: 1234, `0` remote mode: off
+`11` command set: WACOM IV
+
+`11` baud rate: 19200
+
+`00` parity: none
+
+`1` data length: 8 bits
+
+`0` stop bits: 1 stop bit
+
+`00` CTS/DSR: none
+
+`11` data transfer mode: stream
+
+`0` output format: binary
+
+`0` coordinate system: absolute
+
+`11` transfer rate: maximum
+
+`11` resolution: 1270 lpi
+
+`0` origin location: upper left
+
+`0` out-of-range data: no
+
+`10` terminator: carriage return + line feed
+
+`0` not used
+
+`1` PnP: on
+
+`0` pressure sensitivity: firm
+
+`0` reading height: high
+
+`0` multi device mode: disabled
+
+`0` tilt mode: off
+
+`0` MM command set: MM1201
+
+`0` MM961 orientation: landscape
+
+`0` BitPad II cursor data: 1234
+
+`0` remote mode: off
