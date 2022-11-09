@@ -1,7 +1,7 @@
 import serial
 import constants
 import time
-import KT_0405_R_parser
+import parser
 
 def setup():
     serial_port = serial.Serial(port = constants.SERIAL_PORT_PATH,
@@ -13,13 +13,12 @@ def setup():
 
     print("Setting up tablet, please wait. Do not put the pen on the tablet.")
 
-    serial_port.write(constants.WACOM_COMMAND_RESET_WACOM_IV.encode())
-    time.sleep(0.2)
-    serial_port.write(constants.KT_0405_R_SETTINGS_COMMAND.encode())
+    serial_port.write((constants.KT_0405_R_SETTINGS_COMMAND + "\r").encode())
     time.sleep(0.2)
     serial_port.baudrate = constants.SERIAL_PORT_FINAL_BAUD_RATE
     time.sleep(0.2)
-    serial_port.write(constants.KT_0405_R_RESOLUTION_COMMAND.encode())
+    serial_port.write((constants.KT_0405_R_RESOLUTION_COMMAND + "\r").encode())
+    time.sleep(0.2)
 
     print("Tablet setup finished.")
 
@@ -30,5 +29,5 @@ def read_data(serial_port):
     while (len(report) != (constants.SERIAL_PORT_BYTESIZE - constants.SERIAL_PORT_STOPBITS)):
         report = serial_port.read(constants.SERIAL_PORT_BYTESIZE - constants.SERIAL_PORT_STOPBITS)
 
-    report_parsed = KT_0405_R_parser.parse(report)
+    report_parsed = parser.parse(report)
     return report_parsed
