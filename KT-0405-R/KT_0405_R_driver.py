@@ -16,4 +16,4 @@ serial_port = serial_port_handler.setup()
 
 while(True):
     report_parsed = serial_port_handler.read_data(serial_port)
-    vmulti_handler.send_report(report, report_parsed[0], report_parsed[1], report_parsed[2], report_parsed[3], report_parsed[4])
+    vmulti_handler.send_report(report, report_parsed[0], report_parsed[1], report_parsed[2], report_parsed[3], report_parsed[4], report_parsed[5], report_parsed[6])

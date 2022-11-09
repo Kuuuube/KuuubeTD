@@ -18,4 +18,4 @@ def parse(report):
 
     bottom_side_button = bool(int(report[3]) & 0x10)
 
-    return (pos_x, pos_y, pressure, pen_tip, proximity)
+    return (pos_x, pos_y, pressure, pen_tip, proximity, bottom_side_button, top_side_button_or_eraser)

@@ -13,11 +13,20 @@ def find_device():
     else:
         raise Exception("Virtual Multitouch Device driver not loaded.")
 
-def send_report(report, pos_x, pos_y, pressure, press, proximity):    
+def send_report(report, pos_x, pos_y, pressure, press, proximity, pen_button, eraser):    
     button_flags = 0
 
-    button_flags = set_bit(button_flags, 0) if press else unset_bit(button_flags, 0)
-    button_flags = set_bit(button_flags, 4) if proximity else unset_bit(button_flags, 4)
+    if (press):
+        button_flags += int(0x01)
+
+    if (pen_button):
+        button_flags += int(0x02)
+
+    if (eraser):
+        button_flags += int(0x08)
+
+    if (proximity):
+        button_flags += int(0x10)
 
     report_buffer[0] = constants.VMULTI_ID
     report_buffer[1] = 12
@@ -38,9 +47,3 @@ def send_report(report, pos_x, pos_y, pressure, press, proximity):
 
     report.set_raw_data(report_buffer)
     report.send()
-
-def set_bit(val: int, pos: int):
-    return val | (1 << pos)
-
-def unset_bit(val: int, pos: int):
-    return val & ~(1 << pos)
