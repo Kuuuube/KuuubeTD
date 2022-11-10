@@ -42,7 +42,7 @@ Kuuube Tablet Driver, a driver for serial Wacom tablets.
 
     For example, on a setup with two 1920 x 1080 monitors up and down, to map to the bottom monitor, `MONITOR_OFFSET_Y` will be 1080, and to map to the top monitor, `MONITOR_OFFSET_Y` will be 0.
     
-- To use a custom tablet area instead of full area, change the following variables in `KT-0405-R/constants.py` to the desired values:
+- Optionally, to use a custom tablet area instead of full area, change the following variables in `KT-0405-R/constants.py` to the desired values:
 
     `TABLET_MAX_X_POS`: The tablet area width in tablet coordinates to use for the size of the tablet area.
 
