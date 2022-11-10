@@ -36,11 +36,11 @@ Kuuube Tablet Driver, a driver for serial Wacom tablets.
     
     `MONITOR_OFFSET_X`: This is the X axis offset to apply to `MAPPED_MONITOR_RES_X`. (Offsets are added from the top left corner.)
 
-    For example, on a setup with two 1920 x 1080 monitors side by side, to map to the right monitor, "MONITOR_OFFSET_X" will be 1920, and to map to the left monitor, "MONITOR_OFFSET_X" will be 0.
+    For example, on a setup with two 1920 x 1080 monitors side by side, to map to the right monitor, `MONITOR_OFFSET_X` will be 1920, and to map to the left monitor, `MONITOR_OFFSET_X` will be 0.
     
     `MONITOR_OFFSET_Y`: This is the Y axis offset to apply to `MAPPED_MONITOR_RES_Y`. (Offsets are added from the top left corner.)
 
-    For example, on a setup with two 1920 x 1080 monitors up and down, to map to the bottom monitor, "MONITOR_OFFSET_Y" will be 1080, and to map to the top monitor, "MONITOR_OFFSET_Y" will be 0.
+    For example, on a setup with two 1920 x 1080 monitors up and down, to map to the bottom monitor, `MONITOR_OFFSET_Y` will be 1080, and to map to the top monitor, `MONITOR_OFFSET_Y` will be 0.
     
 - To use a custom tablet area instead of full area, change the following variables in `KT-0405-R/constants.py` to the desired values:
 
