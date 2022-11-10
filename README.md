@@ -4,7 +4,7 @@ Kuuube Tablet Driver, a driver for serial Wacom tablets.
 
 ## Usage
 
-### KT-0405-R
+### KT-0405-R:
 
 - Install vmulti from `vmulti/vmulti_driver.zip`. (Extract and run `install_hiddriver.bat` as admin.)
 
@@ -63,7 +63,7 @@ pip install pywinusb
 
 ## Notes
 
-### KT-0405-R
+### KT-0405-R:
 
 #### Settings applied by the driver:
 
