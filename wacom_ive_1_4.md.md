@@ -1,4 +1,4 @@
-# Wacom IV 1.2-1.4:
+# Wacom IVe 1.4:
 
 ## Usage
 
@@ -8,7 +8,7 @@
 
     If you are unsure which path to use, run `tools/find_serial_port_paths.py`. (You may have to guess between a few if there are multiple options.)
 
-- Run `KuuubeTD/wacom_iv_1_2_to_1_4_driver.py` (It has been tested only on KT-0405-R with rom version 1.3-2.)
+- Run `KuuubeTD/wacom_ive_1_4_driver.py` (Coming Soon)
 
     To find your tablet's rom version run `tools/wacom_serial_tablet_diagnostics.py`. (Make sure to set your serial port path.)
 
@@ -53,7 +53,7 @@
 ### Settings Command:
 
 ```
-~*F233C900,000,00,2540,2540
+~*F233C910,000,00,2540,2540
 ```
 
 ### Setting Header
@@ -64,7 +64,7 @@ ASCII: `~*`
 
 ### Setting Body
 
-Hex: `F233C900` Binary: `11110010001100111100100100000000`
+Hex: `F233C910` Binary: `11110010001100111100100100010000`
 
 `11` command set: WACOM IV
 
@@ -104,7 +104,7 @@ Hex: `F233C900` Binary: `11110010001100111100100100000000`
 
 `0` multi device mode: disabled
 
-`0` tilt mode: off
+`1` tilt mode: off
 
 `0` MM command set: MM1201
 

@@ -1,4 +1,4 @@
-# Wacom IV 1.2-1.4:
+# Wacom II-S:
 
 ## Usage
 
@@ -8,7 +8,7 @@
 
     If you are unsure which path to use, run `tools/find_serial_port_paths.py`. (You may have to guess between a few if there are multiple options.)
 
-- Run `KuuubeTD/wacom_iv_1_2_to_1_4_driver.py` (It has been tested only on KT-0405-R with rom version 1.3-2.)
+- Run `KuuubeTD/wacom_ii_s.py` (Coming Soon)
 
     To find your tablet's rom version run `tools/wacom_serial_tablet_diagnostics.py`. (Make sure to set your serial port path.)
 
