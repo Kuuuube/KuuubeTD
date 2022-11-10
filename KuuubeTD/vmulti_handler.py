@@ -14,27 +14,33 @@ def find_device():
     else:
         raise Exception("Virtual Multitouch Device driver not loaded.")
 
-def send_report(vmulti_device_report, pos_x, pos_y, pressure, press, proximity, pen_button, eraser):    
+def send_report_wacom_iv_1_2_to_1_4(vmulti_device_report, proximity, pointer, button_flag, pos_x, buttons, pos_y, pressure):    
     report[0] = VMULTI_ID
     report[1] = USAGE_PAGE_DIGITIZER
     report[2] = OUTPUT_MODE
 
-    button_flags = 0
+    flags = 0
+    if (button_flag):
+        if (pointer):
+            if (bool((buttons & 0x01))): # pen tip
+                flags = flags | int(0x01) # pen tip
 
-    if (press):
-        button_flags += int(0x01)
+            if (bool((buttons & 0x02))): # bottom pen button
+                flags = flags | int(0x02) # barrel button
 
-    if (pen_button):
-        button_flags += int(0x02)
+            #if (bool((buttons & 0x04))): # top pen button
+            #    flags = flags | int(0x02) # barrel button
 
-    if (eraser):
-        button_flags += int(0x08)
-
+            if (bool((buttons & 0x04))): # eraser
+                flags = flags | int(0x08) # invert
+        else:
+            #mouse buttons are not implemented
+            pass
+    
     if (proximity):
-        button_flags += int(0x10)
+        flags = flags | int(0x10)
 
-
-    report[3] = button_flags
+    report[3] = flags
 
     scaled_pos_x = tablet_monitor_mapping.map_x(pos_x)
     report[4] = scaled_pos_x & 0x00FF

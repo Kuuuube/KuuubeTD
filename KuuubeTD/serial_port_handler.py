@@ -4,7 +4,7 @@ from user_constants import *
 import time
 import parser
 
-def setup():
+def setup_wacom_iv_1_2_to_1_4():
     serial_port = serial.Serial(port = SERIAL_PORT_PATH,
     baudrate = SERIAL_PORT_INITIAL_BAUD_RATE,
     bytesize = SERIAL_PORT_BYTESIZE,
@@ -23,10 +23,10 @@ def setup():
 
     return serial_port
 
-def read_data(serial_port):
+def read_data_wacom_iv_1_2_to_1_4(serial_port):
     report = bytes(b"")
     while (len(report) != (SERIAL_PORT_BYTESIZE - SERIAL_PORT_STOPBITS)):
         report = serial_port.read(SERIAL_PORT_BYTESIZE - SERIAL_PORT_STOPBITS)
 
-    report_parsed = parser.parse(report)
+    report_parsed = parser.wacom_iv_1_2_to_1_4_parser(report)
     return report_parsed
