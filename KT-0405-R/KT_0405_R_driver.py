@@ -12,7 +12,12 @@ vmulti_device.open()
 
 vmulti_device_report = vmulti_device.find_output_reports()[-1]
 
-serial_port = serial_port_handler.setup()
+try:
+    serial_port = serial_port_handler.setup()
+except Exception as e:
+    print("Serial device setup failed.")
+    print(e)
+    sys.exit()
 
 while(True):
     report_parsed = serial_port_handler.read_data(serial_port)
