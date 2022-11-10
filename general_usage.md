@@ -34,6 +34,18 @@
 
 - In `KuuubeTD/user_constants.py` set `TABLET_MAX_X_POS` and `TABLET_MAX_Y_POS` based on the size of your tablet.
 
+    On UD and KT tablets: 
+    
+    - To find your tablet's ROM, run `tools/wacom_serial_tablet_diagnostics.py`. The end of `Tablet ID` will show your ROM version.
+    
+    - For example, `Tablet ID: ~#KT-0405-R00 V1.3-2` identifies this as a KT-0405-R with a ROM version of 1.3.
+    
+    - Do not use the `Tablet Size` listed from this tool. Only use it to check the ROM version.
+
+    On SD tablets: 
+    
+    - The ROM is always `Wacom II-S`.
+
     Estimated sizes:
 
     | Tablet Model | ROM              | Max X Pos | Max Y Pos |
