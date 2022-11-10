@@ -10,11 +10,11 @@ Install vmulti from `vmulti/vmulti_driver.zip`. (Extract and run `install_hiddri
 
 Change the serial port path in `KT-0405-R/constants.py` to what it should be for your setup. If you are unsure which path to use, run `tools/find_serial_port_paths.py`. You may have to guess between a few if there are multiple options.
 
-For proper monitor mapping change the following variables in `KT-0405-R/constants.py` to what they should be for your setup: `ALL_MONITORS_RES_X`, `ALL_MONITORS_RES_Y`, `MAPPED_MONITOR_RES_X`, `MAPPED_MONITOR_RES_Y`, `OFFSET_X`, `OFFSET_Y`. 
+For proper monitor mapping change the following variables in `KT-0405-R/constants.py` to what they should be for your setup: `ALL_MONITORS_RES_X`, `ALL_MONITORS_RES_Y`, `MAPPED_MONITOR_RES_X`, `MAPPED_MONITOR_RES_Y`, `OFFSET_X`, `OFFSET_Y`. Offsets are added from the top left corner.
 
 You may also need to change `TABLET_MAX_X_POS` and `TABLET_MAX_Y_POS` if your tablet does not use the same resolution as mine.
 
-Custom tablet areas are not yet supported. You can somewhat add a custom area by changing `TABLET_MAX_X_POS` and `TABLET_MAX_Y_POS` to be lower than the actual maxes.
+You can define a custom tablet area by changing `TABLET_MAX_X_POS` and `TABLET_MAX_Y_POS` to be lower than the actual maxes. The tablet area can be positioned by changing `TABLET_OFFSET_X` and `TABLET_OFFSET_Y`. Offsets are added from the top left corner.
 
 ## KT-0405-R
 
