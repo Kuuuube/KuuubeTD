@@ -14,6 +14,10 @@ def find_device():
         raise Exception("Virtual Multitouch Device driver not loaded.")
 
 def send_report(vmulti_device_report, pos_x, pos_y, pressure, press, proximity, pen_button, eraser):    
+    report[0] = constants.VMULTI_ID
+    report[1] = constants.USAGE_PAGE_DIGITIZER
+    report[2] = constants.OUTPUT_MODE
+
     button_flags = 0
 
     if (press):
@@ -28,9 +32,7 @@ def send_report(vmulti_device_report, pos_x, pos_y, pressure, press, proximity, 
     if (proximity):
         button_flags += int(0x10)
 
-    report[0] = constants.VMULTI_ID
-    report[1] = 12
-    report[2] = constants.OUTPUT_MODE
+
     report[3] = button_flags
 
     scaled_pos_x = int(constants.VMULTI_MONITOR_SCALING_X * (pos_x - constants.TABLET_OFFSET_X) + constants.VMULTI_MONITOR_OFFSET_X)
