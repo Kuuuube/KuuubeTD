@@ -104,7 +104,7 @@ Hex: `F233C910` Binary: `11110010001100111100100100010000`
 
 `0` multi device mode: disabled
 
-`1` tilt mode: off
+`1` tilt mode: on
 
 `0` MM command set: MM1201
 
