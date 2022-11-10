@@ -1,5 +1,6 @@
 from pywinusb import hid
 import constants
+import tablet_monitor_mapping
 
 report = [0x00]*65
 
@@ -35,11 +36,11 @@ def send_report(vmulti_device_report, pos_x, pos_y, pressure, press, proximity, 
 
     report[3] = button_flags
 
-    scaled_pos_x = int(constants.VMULTI_MONITOR_SCALING_X * (pos_x - constants.TABLET_OFFSET_X) + constants.VMULTI_MONITOR_OFFSET_X)
+    scaled_pos_x = tablet_monitor_mapping.map_x(pos_x)
     report[4] = scaled_pos_x & 0x00FF
     report[5] = (scaled_pos_x & 0xFF00) >> 8
 
-    scaled_pos_y = int(constants.VMULTI_MONITOR_SCALING_Y * (pos_y - constants.TABLET_OFFSET_Y) + constants.VMULTI_MONITOR_OFFSET_Y)
+    scaled_pos_y = tablet_monitor_mapping.map_y(pos_y)
     report[6] = scaled_pos_y & 0x00FF
     report[7] = (scaled_pos_y & 0xFF00) >> 8
 
