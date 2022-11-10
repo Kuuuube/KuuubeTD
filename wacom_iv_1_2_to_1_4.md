@@ -1,18 +1,18 @@
-# KT-0405-R:
+# Wacom IV 1.2-1.4:
 
 ## Usage
 
 - Install vmulti from `vmulti/vmulti_driver.zip`. (Extract and run `install_hiddriver.bat` as admin.)
 
-- Change `SERIAL_PORT_PATH` in `KT-0405-R/constants.py` to the path the tablet is connected to.
+- Change `SERIAL_PORT_PATH` in `KuuubeTD/user_constants.py` to the path the tablet is connected to.
 
     If you are unsure which path to use, run `tools/find_serial_port_paths.py`. (You may have to guess between a few if there are multiple options.)
 
-- Run `KT-0405-R/KT_0405_R_driver.py` (It has been tested only on KT-0405-R with rom version 1.3-2.)
+- Run `KuuubeTD/wacom_iv_1_2_to_1_4_driver.py.py` (It has been tested only on KT-0405-R with rom version 1.3-2.)
 
     To find your tablet's rom version run `tools/wacom_serial_tablet_diagnostics.py`. (Make sure to set your serial port path.)
 
-- For proper monitor mapping, change the following variables in `KT-0405-R/constants.py` to the correct values for your setup: 
+- For proper monitor mapping, change the following variables in `KuuubeTD/user_constants.py` to the correct values for your setup: 
 
     `ALL_MONITORS_RES_X`: This is the X axis resolution of all your monitors combined. 
     
@@ -38,7 +38,7 @@
 
     For example, on a setup with two 1920 x 1080 monitors up and down, to map to the bottom monitor, `MONITOR_OFFSET_Y` will be 1080, and to map to the top monitor, `MONITOR_OFFSET_Y` will be 0.
     
-- Optionally, to use a custom tablet area instead of full area, change the following variables in `KT-0405-R/constants.py` to the desired values:
+- Optionally, to use a custom tablet area instead of full area, change the following variables in `KuuubeTD/user_constants.py` to the desired values:
 
     `TABLET_MAX_X_POS`: The tablet area width in tablet coordinates to use for the size of the tablet area.
 
@@ -50,7 +50,19 @@
 
 ## Notes
 
-### Settings applied by the driver:
+### Settings Command:
+
+```
+~*F233C900,000,00,2540,2540
+```
+
+### Setting Header
+
+ASCII: `~*`
+
+`~*`: Header of settings command
+
+### Setting Body
 
 Hex: `F233C900` Binary: `11110010001100111100100100000000`
 
@@ -102,6 +114,14 @@ Hex: `F233C900` Binary: `11110010001100111100100100000000`
 
 `0` remote mode: off
 
-ASCII: `NR2540` Binary: `010011100101001000110010001101010011010000110000`
+### Setting Tail
 
-`NR2540` resolution: 2540 lpi
+ASCII: `,000,00,2540,2540`
+
+`000` increment: 0
+
+`00` interval: 0
+
+`2540` x-resolution: 2540
+
+`2540` y-resolution: 2540
