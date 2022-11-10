@@ -4,7 +4,7 @@ Kuuube Tablet Driver, a driver for serial Wacom tablets.
 
 ## Usage
 
-### [Wacom IV 1.2-1.4](./Wacom_IV_1_2_to_1_4)
+### [Wacom IV 1.2-1.4](./wacom_iv_1_2_to_1_4.md)
 
 ## Dependencies
 
