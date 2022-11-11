@@ -4,7 +4,7 @@ Kuuube Tablet Driver, a driver for serial Wacom tablets.
 
 ## Usage
 
-Find your tablet's ROM version then use the applicable version:
+Find your tablet's ROM version then use the applicable version. To find your tablet's ROM version, follow [Finding ROM Version](./finding_rom_version.md).
 
 ### [Wacom IVe 1.4](./wacom_ive_1_4.md)
 
@@ -13,8 +13,6 @@ Find your tablet's ROM version then use the applicable version:
 ### [Wacom IV 1.0-1.1](./wacom_iv_1_0_to_1_1.md)
 
 ### [Wacom II-S](./wacom_ii_s.md)
-
-To find your tablet's ROM version, follow [Finding ROM Version](./finding_rom_version.md).
 
 ## Dependencies
 
