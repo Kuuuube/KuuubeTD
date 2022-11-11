@@ -71,8 +71,8 @@ def setup_wacom_ii_s():
 
     print("Setting up tablet, please wait. Do not put the pen on the tablet.")
 
-    #serial_port.write((WACOM_II_S_RESET_COMMAND + "\r").encode()) # for some reason resetting can cause issues
-    #time.sleep(0.2)
+    serial_port.write((WACOM_II_S_RESET_COMMAND + "\r").encode())
+    time.sleep(0.2)
     serial_port.write((WACOM_II_S_PRESSURE_MODE_COMMAND + "\r").encode())
     time.sleep(0.2)
     serial_port.write((WACOM_II_S_BINARY_MODE_COMMAND + "\r").encode())
