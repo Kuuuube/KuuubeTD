@@ -20,7 +20,7 @@ SR
 
 ### Setting Data
 
-`$` reset to default command set
+`RE` reset to default command set
 
 `PH1` pressure mode: on
 
