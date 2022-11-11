@@ -152,13 +152,15 @@ def send_report_wacom_ii_s(vmulti_device_report, proximity, pointer, pos_x, pos_
     report[2] = OUTPUT_MODE
 
     flags = 0
-    if (button_flag):
-        if (pointer):
-            if (bool((buttons & 0x01))): # pen tip
-                flags = flags | int(0x01) # pen tip
-        else:
-            # mouse buttons are not implemented
-            pass
+    if (pointer or button_flag):
+        if (bool((buttons & 0x01))): # pen tip
+            flags = flags | int(0x01) # pen tip
+
+        if (pressure > 1): # pen tip
+            flags = flags | int(0x01) # pen tip
+    else:
+        # mouse buttons are not implemented
+        pass
     
     if (proximity):
         flags = flags | int(0x10)
