@@ -33,40 +33,40 @@
     For example, on a setup with two 1920 x 1080 monitors up and down, to map to the bottom monitor, `MONITOR_OFFSET_Y` will be 1080, and to map to the top monitor, `MONITOR_OFFSET_Y` will be 0.
 
 - In `KuuubeTD/user_constants.py` set `TABLET_MAX_X_POS` and `TABLET_MAX_Y_POS` based on the size of your tablet.
-
+    
     To find your tablet's ROM version, follow [Finding ROM Version](./finding_rom_version.md).
 
     Estimated sizes:
 
-    | Tablet Model | ROM              | Max X Pos | Max Y Pos |
-    |--------------|------------------|-----------|-----------|
-    | UD-0608-R    | Wacom IVe 1.4    | 20480     | 15360     |
-    | UD-1212-R    | Wacom IVe 1.4    | 30480     | 30480     |
-    | UD-1218-R    | Wacom IVe 1.4    | 45720     | 30480     |
-    | UD-1825-R    | Wacom IVe 1.4    | 63500     | 46200     |
-    | UD-0608-R    | Wacom IV 1.2-1.4 | 20480     | 15360     |
-    | UD-1212-R    | Wacom IV 1.2-1.4 | 30480     | 30480     |
-    | UD-1218-R    | Wacom IV 1.2-1.4 | 45720     | 30480     |
-    | UD-1825-R    | Wacom IV 1.2-1.4 | 63500     | 46200     |
-    | KT-0405-R    | Wacom IV 1.2-1.4 | 12800     | 9600      |
-    | KT-0405-R    | Wacom IV 1.0-1.1 | 6400      | 4800      |
-    | UD-0608-R    | Wacom IV 1.0-1.1 | 10240     | 7680      |
-    | UD-1212-R    | Wacom IV 1.0-1.1 | 15240     | 15240     |
-    | UD-1218-R    | Wacom IV 1.0-1.1 | 22860     | 15240     |
-    | UD-1825-R    | Wacom IV 1.0-1.1 | 31750     | 23100     |
-    | SD-510C      | Wacom II-S       | 6960      | 4530      |
-    | SD-420E      | Wacom II-S       | 15240     | 15240     |
-    | SD-421E      | Wacom II-S       | 15240     | 15240     |
-    | SD-422E      | Wacom II-S       | 15240     | 15240     |
-    | SD-320E      | Wacom II-S       | 18050     | 18050     |
-    | SD-321E      | Wacom II-S       | 18050     | 18050     |
-    | SD-322E      | Wacom II-S       | 18050     | 18050     |
-    | SD-310E      | Wacom II-S       | 22860     | 15240     |
-    | SD-311E      | Wacom II-S       | 22860     | 15240     |
-    | SD-312E      | Wacom II-S       | 22860     | 15240     |
-    | SD-210L      | Wacom II-S       | 31750     | 23100     |
-    | SD-013A      | Wacom II-S       | 59650     | 44450     |
-    | SD-013L      | Wacom II-S       | 59650     | 44450     |
+    | Tablet Model | ROM              | Estimated Max X Pos | Estimated Max Y Pos | Tested Max X Pos | Tested Max Y Pos |
+    |--------------|------------------|---------------------|---------------------|------------------|------------------|
+    | UD-0608-R    | Wacom IVe 1.4    | 20480               | 15360               |                  |                  |
+    | UD-1212-R    | Wacom IVe 1.4    | 30480               | 30480               |                  |                  |
+    | UD-1218-R    | Wacom IVe 1.4    | 45720               | 30480               |                  |                  |
+    | UD-1825-R    | Wacom IVe 1.4    | 63500               | 46200               |                  |                  |
+    | UD-0608-R    | Wacom IV 1.2-1.4 | 20480               | 15360               |                  |                  |
+    | UD-1212-R    | Wacom IV 1.2-1.4 | 30480               | 30480               |                  |                  |
+    | UD-1218-R    | Wacom IV 1.2-1.4 | 45720               | 30480               |                  |                  |
+    | UD-1825-R    | Wacom IV 1.2-1.4 | 63500               | 46200               |                  |                  |
+    | KT-0405-R    | Wacom IV 1.2-1.4 | 12800               | 9600                | 12800            | 9600             |
+    | KT-0405-R    | Wacom IV 1.0-1.1 | 6400                | 4800                |                  |                  |
+    | UD-0608-R    | Wacom IV 1.0-1.1 | 10240               | 7680                |                  |                  |
+    | UD-1212-R    | Wacom IV 1.0-1.1 | 15240               | 15240               |                  |                  |
+    | UD-1218-R    | Wacom IV 1.0-1.1 | 22860               | 15240               |                  |                  |
+    | UD-1825-R    | Wacom IV 1.0-1.1 | 31750               | 23100               |                  |                  |
+    | SD-510C      | Wacom II-S       | 6960                | 4530                | 4640             | 3020             |
+    | SD-420E      | Wacom II-S       | 15240               | 15240               |                  |                  |
+    | SD-421E      | Wacom II-S       | 15240               | 15240               |                  |                  |
+    | SD-422E      | Wacom II-S       | 15240               | 15240               |                  |                  |
+    | SD-320E      | Wacom II-S       | 18050               | 18050               |                  |                  |
+    | SD-321E      | Wacom II-S       | 18050               | 18050               |                  |                  |
+    | SD-322E      | Wacom II-S       | 18050               | 18050               |                  |                  |
+    | SD-310E      | Wacom II-S       | 22860               | 15240               |                  |                  |
+    | SD-311E      | Wacom II-S       | 22860               | 15240               |                  |                  |
+    | SD-312E      | Wacom II-S       | 22860               | 15240               |                  |                  |
+    | SD-210L      | Wacom II-S       | 31750               | 23100               |                  |                  |
+    | SD-013A      | Wacom II-S       | 59650               | 44450               |                  |                  |
+    | SD-013L      | Wacom II-S       | 59650               | 44450               |                  |                  |
 
 - Optionally, to use a custom tablet area instead of full area, change the following variables in `KuuubeTD/user_constants.py` to the desired values:
 
