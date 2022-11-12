@@ -16,4 +16,4 @@ On UD and KT tablets:
 
 On SD tablets: 
 
-- The ROM is always `Wacom II-S` or `Wacom II`. For the purposes of this driver the differences between these do not matter. Use the `Wacom II-S` driver.
+- The ROM for the SD-510C is always `Wacom II-S` and the ROM for all other models is `Wacom II`. For the purposes of this driver the differences between these do not matter. Use the `Wacom II-S` driver.
