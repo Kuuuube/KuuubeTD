@@ -8,6 +8,8 @@
 
 - Optionally, you can set the first three dip switches in DS 2 (Dip Switch Bank 2) to on. This will increase the baud rate to 19200 and allow the tablet to send at a faster rate. If you make this change you will also need to change `SERIAL_PORT_INITIAL_BAUD_RATE` in `internal_constants.py` to 19200.
 
+    If you make a mistake or need to reset to defaults for any reason see: [Wacom II-S Dip Switch Defaults](./wacom_ii_s_dip_switch_defaults.png).
+
 ## Notes
 
 ### Settings Commands Applied by Driver:
