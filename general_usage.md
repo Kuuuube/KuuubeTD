@@ -55,18 +55,18 @@
     | UD-1218-R    | Wacom IV 1.0-1.1 | 22860               | 15240               |                  |                  |
     | UD-1825-R    | Wacom IV 1.0-1.1 | 31750               | 23100               |                  |                  |
     | SD-510C      | Wacom II-S       | 6960                | 4530                | 4640             | 3020             |
-    | SD-420E      | Wacom II-S       | 15240               | 15240               |                  |                  |
-    | SD-421E      | Wacom II-S       | 15240               | 15240               |                  |                  |
-    | SD-422E      | Wacom II-S       | 15240               | 15240               |                  |                  |
-    | SD-320E      | Wacom II-S       | 18050               | 18050               |                  |                  |
-    | SD-321E      | Wacom II-S       | 18050               | 18050               |                  |                  |
-    | SD-322E      | Wacom II-S       | 18050               | 18050               |                  |                  |
-    | SD-310E      | Wacom II-S       | 22860               | 15240               |                  |                  |
-    | SD-311E      | Wacom II-S       | 22860               | 15240               |                  |                  |
-    | SD-312E      | Wacom II-S       | 22860               | 15240               |                  |                  |
-    | SD-210L      | Wacom II-S       | 31750               | 23100               |                  |                  |
-    | SD-013A      | Wacom II-S       | 59650               | 44450               |                  |                  |
-    | SD-013L      | Wacom II-S       | 59650               | 44450               |                  |                  |
+    | SD-420E      | Wacom II         | 15240               | 15240               |                  |                  |
+    | SD-421E      | Wacom II         | 15240               | 15240               |                  |                  |
+    | SD-422E      | Wacom II         | 15240               | 15240               |                  |                  |
+    | SD-320E      | Wacom II         | 18050               | 18050               |                  |                  |
+    | SD-321E      | Wacom II         | 18050               | 18050               |                  |                  |
+    | SD-322E      | Wacom II         | 18050               | 18050               |                  |                  |
+    | SD-310E      | Wacom II         | 22860               | 15240               |                  |                  |
+    | SD-311E      | Wacom II         | 22860               | 15240               |                  |                  |
+    | SD-312E      | Wacom II         | 22860               | 15240               |                  |                  |
+    | SD-210L      | Wacom II         | 31750               | 23100               |                  |                  |
+    | SD-013A      | Wacom II         | 59650               | 44450               |                  |                  |
+    | SD-013L      | Wacom II         | 59650               | 44450               |                  |                  |
 
 - Optionally, to use a custom tablet area instead of full area, change the following variables in `KuuubeTD/user_constants.py` to the desired values:
 
