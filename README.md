@@ -4,15 +4,15 @@ Kuuube Tablet Driver, a driver for old graphics tablets which use a serial port.
 
 ## Usage
 
-Find your tablet's ROM version then use the applicable version. To find your tablet's ROM version, follow [Finding ROM Version](./finding_rom_version.md).
+Find your tablet's ROM version then use the applicable version. To find your tablet's ROM version, follow [Finding ROM Version](./docs/finding_rom_version.md).
 
-### [Wacom IVe 1.4](./wacom_ive_1_4.md)
+### [Wacom IVe 1.4](./docs/wacom_ive_1_4.md)
 
-### [Wacom IV 1.2-1.4](./wacom_iv_1_2_to_1_4.md)
+### [Wacom IV 1.2-1.4](./docs/wacom_iv_1_2_to_1_4.md)
 
-### [Wacom IV 1.0-1.1](./wacom_iv_1_0_to_1_1.md)
+### [Wacom IV 1.0-1.1](./docs/wacom_iv_1_0_to_1_1.md)
 
-### [Wacom II-S](./wacom_ii_s.md)
+### [Wacom II-S](./docs/wacom_ii_s.md)
 
 ## Dependencies
 
@@ -35,11 +35,11 @@ pip install pywinusb
 
 ## FAQ
 
-[FAQ](./faq.md)
+[FAQ](./docs/faq.md)
 
 ## Supported Tablets
 
-[Supported Tablets List](./supported_tablets.md)
+[Supported Tablets List](./docs/supported_tablets.md)
 
 ## Issues and Troubleshooting
 
