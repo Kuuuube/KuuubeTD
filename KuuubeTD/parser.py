@@ -23,7 +23,7 @@ def wacom_ive_1_4_parser(report):
 
     tilt_y = int(report[8]) & 0x3F
 
-    if (int(report[7]) & 0x40 == 0):
+    if (int(report[8]) & 0x40 == 0):
         tilt_y = tilt_y * -1
 
     return (proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y)
