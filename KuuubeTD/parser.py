@@ -16,15 +16,9 @@ def wacom_ive_1_4_parser(report):
 
     buttons = (int(report[3]) & 0x78) >> 3
 
-    tilt_x = int(report[7]) & 0x3F
+    tilt_x = (int(report[7]) & 0x7F) - 64
 
-    if (int(report[7]) & 0x40 == 0x40):
-        tilt_x = tilt_x * -1
-
-    tilt_y = int(report[8]) & 0x3F
-
-    if (int(report[8]) & 0x40 == 0x40):
-        tilt_y = tilt_y * -1
+    tilt_y = (int(report[8]) & 0x7F) - 64
 
     return (proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y)
 
