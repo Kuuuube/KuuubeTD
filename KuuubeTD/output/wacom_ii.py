@@ -1,5 +1,6 @@
 from pywinusb import hid
 from internal_constants import *
+from user_constants import *
 import tablet_monitor_mapping
 
 report = [0x00]*65
@@ -43,7 +44,9 @@ def send_vmulti_report_wacom_ii(vmulti_device_report, proximity, pointer, pos_x,
     report[6] = scaled_pos_y & 0x00FF
     report[7] = (scaled_pos_y & 0xFF00) >> 8
 
-    scaled_pressure = int(pressure * VMULTI_PRESSURE_SCALING_WACOM_II_S)
+    scaled_pressure = 0
+    if pressure > PRESSURE_DEADZONE:
+        scaled_pressure = int(pressure / WACOM_II_MAX_PRESSURE * 8191)
     report[8] = scaled_pressure & 0x00FF
     report[9] = (scaled_pressure & 0xFF00) >> 8
 
