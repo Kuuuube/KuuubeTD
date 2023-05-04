@@ -19,7 +19,7 @@
 | SD-510C      | Wacom II-S       | Supported           |
 | SD-420E      | Wacom II         | Untested            |
 | SD-421E      | Wacom II         | Untested            |
-| SD-422E      | Wacom II         | Untested            |
+| SD-422E      | Wacom II         | Supported           |
 | SD-320E      | Wacom II         | Untested            |
 | SD-321E      | Wacom II         | Untested            |
 | SD-322E      | Wacom II         | Untested            |

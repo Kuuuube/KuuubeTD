@@ -57,7 +57,7 @@
     | SD-510C      | Wacom II-S       | 6960                | 4530                | 4640             | 3020             |
     | SD-420E      | Wacom II         | 15240               | 15240               |                  |                  |
     | SD-421E      | Wacom II         | 15240               | 15240               |                  |                  |
-    | SD-422E      | Wacom II         | 15240               | 15240               |                  |                  |
+    | SD-422E      | Wacom II         | 15240               | 15240               | 15240            | 15240            |
     | SD-320E      | Wacom II         | 18050               | 18050               |                  |                  |
     | SD-321E      | Wacom II         | 18050               | 18050               |                  |                  |
     | SD-322E      | Wacom II         | 18050               | 18050               |                  |                  |
@@ -77,3 +77,9 @@
     `TABLET_OFFSET_X`: The X axis offset to apply to `TABLET_MAX_X_POS` in tablet coordinates to change the position of the tablet area. (Offsets are added from the top left corner.)
 
     `TABLET_OFFSET_Y`: The Y axis offset to apply to `TABLET_MAX_Y_POS` in tablet coordinates to change the position of the tablet area. (Offsets are added from the top left corner.)
+
+- If your tablet is reporting pressure when hovering but maxes at the correct pressure it may require a pressure deadzone or if it's reporting pressure when hovering and sending pressure over the max it may require a pressure offset. To find the pressure values your tablet is reporting, run `KuuubeTD/debugger.py`. Then change the following variables in `KuuubeTD/user_constants.py`:
+
+    `PRESSURE_DEADZONE`: All pressure values at or below this value will be ignored.
+
+    `PRESSURE_OFFSET`: Adds this value to the pressure. (Use a negative offset if your tablet is reporting pressure too high)
