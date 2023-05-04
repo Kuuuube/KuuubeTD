@@ -54,6 +54,8 @@ def send_vmulti_report_wacom_iv_1_2_to_1_4(vmulti_device_report, proximity, poin
     scaled_pressure = 0
     if pressure > PRESSURE_DEADZONE:
         scaled_pressure = int(pressure + PRESSURE_OFFSET / WACOM_IV_1_2_TO_1_4_MAX_PRESSURE * 8191)
+        if scaled_pressure < 0:
+            scaled_pressure = 0
     report[8] = scaled_pressure & 0x00FF
     report[9] = (scaled_pressure & 0xFF00) >> 8
 
