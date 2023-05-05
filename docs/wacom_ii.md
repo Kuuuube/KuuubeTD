@@ -1,4 +1,4 @@
-# Wacom II-S:
+# Wacom II:
 
 ## Usage
 
