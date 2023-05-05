@@ -16,6 +16,10 @@ def find_vmulti_device():
         raise Exception("Virtual Multitouch Device driver not loaded.")
 
 def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y):    
+    pressure = pressure + PRESSURE_OFFSET
+    if pressure <= PRESSURE_DEADZONE or pressure < 0:
+        pressure = 0
+
     report[0] = VMULTI_ID
     report[1] = USAGE_PAGE_DIGITIZER
     report[2] = OUTPUT_MODE
@@ -51,11 +55,7 @@ def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, b
     report[6] = scaled_pos_y & 0x00FF
     report[7] = (scaled_pos_y & 0xFF00) >> 8
 
-    scaled_pressure = 0
-    if pressure > PRESSURE_DEADZONE:
-        scaled_pressure = int(pressure + PRESSURE_OFFSET / WACOM_IVE_1_4_MAX_PRESSURE * 8191)
-        if scaled_pressure < 0:
-            scaled_pressure = 0
+    scaled_pressure = int(pressure + PRESSURE_OFFSET / WACOM_IVE_1_4_MAX_PRESSURE * 8191)
     report[8] = scaled_pressure & 0x00FF
     report[9] = (scaled_pressure & 0xFF00) >> 8
 
