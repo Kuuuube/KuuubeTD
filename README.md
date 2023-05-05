@@ -14,6 +14,8 @@ Find your tablet's ROM version then use the applicable version. To find your tab
 
 ### [Wacom II-S](./docs/wacom_ii_s.md)
 
+### [Wacom II](./docs/wacom_ii.md)
+
 ## Dependencies
 
 Python 3: [Download link](https://www.python.org/downloads/)
