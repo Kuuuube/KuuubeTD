@@ -18,10 +18,6 @@ def setup_wacom_ii(port = SERIAL_PORT_PATH, baudrate = SERIAL_PORT_INITIAL_BAUD_
     time.sleep(0.2)
     serial_port.write((WACOM_II_AND_II_S_OPERATION_MODE_COMMAND + "\r").encode())
     time.sleep(0.2)
-    serial_port.write((WACOM_II_BAUD_RATE_COMMAND + "\r").encode())
-    time.sleep(0.2)
-    serial_port.baudrate = SERIAL_PORT_FINAL_BAUD_RATE
-    time.sleep(0.2)
 
     print("Tablet setup finished.")
 
