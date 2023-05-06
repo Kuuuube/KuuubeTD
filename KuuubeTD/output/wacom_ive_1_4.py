@@ -5,16 +5,6 @@ import tablet_monitor_mapping
 
 report = [0x00]*65
 
-def find_vmulti_device():
-    all_devices = hid.HidDeviceFilter(vendor_id = VMULTI_DEVICE_VENDOR_ID, product_id = VMULTI_DEVICE_PRODUCT_ID,).get_devices()
-
-    if len(all_devices) > 0:
-        virtual_device = all_devices[-1]
-        return virtual_device
-
-    else:
-        raise Exception("Virtual Multitouch Device driver not loaded.")
-
 def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y):    
     pressure = pressure + PRESSURE_OFFSET
     if pressure <= PRESSURE_DEADZONE or pressure < 0:

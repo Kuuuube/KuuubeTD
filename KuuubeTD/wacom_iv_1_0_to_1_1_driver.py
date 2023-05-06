@@ -2,12 +2,13 @@ import sys
 import parsers.wacom_iv_1_0_to_1_1
 import tablet_setup.wacom_iv_1_0_to_1_1
 import output.wacom_iv_1_0_to_1_1
+import vmulti_device_handler
 from internal_constants import *
 from user_constants import *
 
 vmulti_device = None
 try:
-    vmulti_device = output.wacom_iv_1_0_to_1_1.find_vmulti_device()
+    vmulti_device = vmulti_device_handler.find_vmulti_device()
 except Exception as e:
     print(e)
     sys.exit()
