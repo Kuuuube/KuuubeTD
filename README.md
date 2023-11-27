@@ -6,6 +6,8 @@ Kuuube Tablet Driver, a driver for old graphics tablets which use a serial port.
 
 Find your tablet's ROM version then use the applicable version. To find your tablet's ROM version, follow [Finding ROM Version](./docs/finding_rom_version.md).
 
+### [Wacom V 2.0](./docs/wacom_v_2_0.md)
+
 ### [Wacom IVe 1.4](./docs/wacom_ive_1_4.md)
 
 ### [Wacom IV 1.2-1.4](./docs/wacom_iv_1_2_to_1_4.md)

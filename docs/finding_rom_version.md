@@ -1,5 +1,9 @@
 # Finding ROM Version
 
+On XD and GD tablets:
+
+- The ROM version is always `Wacom V 2.0`.
+
 On UD and KT tablets: 
 
 - To find your tablet's ROM, run `tools/wacom_serial_tablet_diagnostics.py`. The end of `Tablet ID` will show your ROM version. (Do not use the `Tablet Size` listed from this tool. Only use it to check the ROM version.)

@@ -2,6 +2,16 @@
 
 | Tablet Model | ROM              | Supported Status    |
 |--------------|------------------|---------------------|
+| XD-0405-R    | Wacom V 2.0      | Untested            |
+| XD-0608-R    | Wacom V 2.0      | Untested            |
+| XD-0912-R    | Wacom V 2.0      | Untested            |
+| XD-1212-R    | Wacom V 2.0      | Untested            |
+| XD-1218-R    | Wacom V 2.0      | Untested            |
+| GD-0405-R    | Wacom V 2.0      | Untested            |
+| GD-0608-R    | Wacom V 2.0      | Supported           |
+| GD-0912-R    | Wacom V 2.0      | Untested            |
+| GD-1212-R    | Wacom V 2.0      | Untested            |
+| GD-1218-R    | Wacom V 2.0      | Untested            |
 | UD-0608-R    | Wacom IVe 1.4    | Untested            |
 | UD-1212-R    | Wacom IVe 1.4    | Untested            |
 | UD-1218-R    | Wacom IVe 1.4    | Untested            |
