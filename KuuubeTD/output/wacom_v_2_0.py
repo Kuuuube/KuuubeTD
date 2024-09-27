@@ -6,6 +6,10 @@ import tablet_monitor_mapping
 report = [0x00]*65
 
 def send_vmulti_report_wacom_v_2_0(vmulti_device_report, proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y):    
+    pressure = pressure + PRESSURE_OFFSET
+    if pressure <= PRESSURE_DEADZONE or pressure < 0:
+        pressure = 0
+
     report[0] = VMULTI_ID
     report[1] = USAGE_PAGE_DIGITIZER
     report[2] = OUTPUT_MODE
