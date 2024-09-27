@@ -45,7 +45,7 @@ def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, b
     report[6] = scaled_pos_y & 0x00FF
     report[7] = (scaled_pos_y & 0xFF00) >> 8
 
-    scaled_pressure = int(pressure + PRESSURE_OFFSET / WACOM_IVE_1_4_MAX_PRESSURE * 8191)
+    scaled_pressure = int(pressure / WACOM_IVE_1_4_MAX_PRESSURE * 8191)
     report[8] = scaled_pressure & 0x00FF
     report[9] = (scaled_pressure & 0xFF00) >> 8
 
