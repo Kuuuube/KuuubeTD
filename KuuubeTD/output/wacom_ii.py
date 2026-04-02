@@ -1,6 +1,5 @@
-from pywinusb import hid
-from internal_constants import *
-from user_constants import *
+from internal_constants import VMULTI_ID, USAGE_PAGE_DIGITIZER, OUTPUT_MODE, WACOM_II_MAX_PRESSURE
+from user_constants import PRESSURE_OFFSET, PRESSURE_DEADZONE
 import tablet_monitor_mapping
 
 report = [0x00]*65
