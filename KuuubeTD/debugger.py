@@ -1,8 +1,18 @@
 import serial
 import serial.tools.list_ports
 import re
-import parsers.wacom_v_2_0, parsers.wacom_ive_1_4, parsers.wacom_iv_1_2_to_1_4, parsers.wacom_iv_1_0_to_1_1, parsers.wacom_ii_s, parsers.wacom_ii
-import tablet_setup.wacom_v_2_0, tablet_setup.wacom_ive_1_4, tablet_setup.wacom_iv_1_2_to_1_4, tablet_setup.wacom_iv_1_0_to_1_1, tablet_setup.wacom_ii_s, tablet_setup.wacom_ii
+import parsers.wacom_v_2_0
+import parsers.wacom_ive_1_4
+import parsers.wacom_iv_1_2_to_1_4
+import parsers.wacom_iv_1_0_to_1_1
+import parsers.wacom_ii_s
+import parsers.wacom_ii
+import tablet_setup.wacom_v_2_0
+import tablet_setup.wacom_ive_1_4
+import tablet_setup.wacom_iv_1_2_to_1_4
+import tablet_setup.wacom_iv_1_0_to_1_1
+import tablet_setup.wacom_ii_s
+import tablet_setup.wacom_ii
 import sys
 import time
 import os
