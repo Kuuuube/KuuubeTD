@@ -45,12 +45,12 @@ def send_vmulti_report_wacom_v_2_0(vmulti_device_report, proximity, pointer, but
     report[6] = scaled_pos_y & 0x00FF
     report[7] = (scaled_pos_y & 0xFF00) >> 8
 
-    scaled_pressure = int(pressure * VMULTI_PRESSURE_SCALING_WACOM_IVE_1_4)
+    scaled_pressure = int(pressure / WACOM_V_2_0_MAX_PRESSURE * 8192)
     report[8] = scaled_pressure & 0x00FF
     report[9] = (scaled_pressure & 0xFF00) >> 8
 
-    report[10] = int(tilt_x * VMULTI_TILT_SCALING_WACOM_IVE_1_4)
-    report[11] = int(tilt_y * VMULTI_TILT_SCALING_WACOM_IVE_1_4)
+    report[10] = int(tilt_x / WACOM_V_2_0_MAX_TILT * 127)
+    report[11] = int(tilt_y / WACOM_V_2_0_MAX_TILT * 127)
 
     vmulti_device_report.set_raw_data(report)
     vmulti_device_report.send()
