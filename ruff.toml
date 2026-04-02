@@ -1,0 +1,11 @@
+select = ["ALL"]
+ignore = [
+    "EXE002",
+    "D100",
+    "INP001",
+]
+
+[lint.per-file-ignores]
+"logger.py" = []
+"./tests/*" = []
+"./tools/*" = []
