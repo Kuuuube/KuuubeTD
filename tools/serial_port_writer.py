@@ -1,5 +1,6 @@
-import serial
 import time
+
+import serial
 
 SERIAL_PORT = "COM3"
 SERIAL_RATE = 9600

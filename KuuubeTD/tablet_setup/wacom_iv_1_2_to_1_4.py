@@ -1,7 +1,16 @@
-import serial
-from internal_constants import SERIAL_PORT_INITIAL_BAUD_RATE, SERIAL_PORT_BYTESIZE, SERIAL_PORT_TIMEOUT, SERIAL_PORT_STOPBITS, SERIAL_PORT_FINAL_BAUD_RATE, WACOM_IV_1_2_TO_1_4_SETTINGS_COMMAND
-from user_constants import SERIAL_PORT_PATH
 import time
+
+import serial
+from internal_constants import (
+    SERIAL_PORT_BYTESIZE,
+    SERIAL_PORT_FINAL_BAUD_RATE,
+    SERIAL_PORT_INITIAL_BAUD_RATE,
+    SERIAL_PORT_STOPBITS,
+    SERIAL_PORT_TIMEOUT,
+    WACOM_IV_1_2_TO_1_4_SETTINGS_COMMAND,
+)
+from user_constants import SERIAL_PORT_PATH
+
 
 def setup_wacom_iv_1_2_to_1_4(port = SERIAL_PORT_PATH, baudrate = SERIAL_PORT_INITIAL_BAUD_RATE, bytesize = SERIAL_PORT_BYTESIZE, timeout = SERIAL_PORT_TIMEOUT, stopbits = SERIAL_PORT_STOPBITS):
     serial_port = serial.Serial(port = port, baudrate = baudrate, bytesize = bytesize, timeout = timeout, stopbits = stopbits)

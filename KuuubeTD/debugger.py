@@ -1,22 +1,30 @@
-import serial
-import serial.tools.list_ports
+import os
 import re
-import parsers.wacom_v_2_0
-import parsers.wacom_ive_1_4
-import parsers.wacom_iv_1_2_to_1_4
-import parsers.wacom_iv_1_0_to_1_1
-import parsers.wacom_ii_s
-import parsers.wacom_ii
-import tablet_setup.wacom_v_2_0
-import tablet_setup.wacom_ive_1_4
-import tablet_setup.wacom_iv_1_2_to_1_4
-import tablet_setup.wacom_iv_1_0_to_1_1
-import tablet_setup.wacom_ii_s
-import tablet_setup.wacom_ii
 import sys
 import time
-import os
-from internal_constants import SERIAL_PORT_WACOM_V_2_0_REPORT_SIZE, SERIAL_PORT_WACOM_IVE_1_4_REPORT_SIZE, SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE, SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE, SERIAL_PORT_WACOM_II_S_REPORT_SIZE, SERIAL_PORT_WACOM_II_REPORT_SIZE
+
+import parsers.wacom_ii
+import parsers.wacom_ii_s
+import parsers.wacom_iv_1_0_to_1_1
+import parsers.wacom_iv_1_2_to_1_4
+import parsers.wacom_ive_1_4
+import parsers.wacom_v_2_0
+import serial
+import serial.tools.list_ports
+import tablet_setup.wacom_ii
+import tablet_setup.wacom_ii_s
+import tablet_setup.wacom_iv_1_0_to_1_1
+import tablet_setup.wacom_iv_1_2_to_1_4
+import tablet_setup.wacom_ive_1_4
+import tablet_setup.wacom_v_2_0
+from internal_constants import (
+    SERIAL_PORT_WACOM_II_REPORT_SIZE,
+    SERIAL_PORT_WACOM_II_S_REPORT_SIZE,
+    SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE,
+    SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE,
+    SERIAL_PORT_WACOM_IVE_1_4_REPORT_SIZE,
+    SERIAL_PORT_WACOM_V_2_0_REPORT_SIZE,
+)
 
 ports = serial.tools.list_ports.comports()
 

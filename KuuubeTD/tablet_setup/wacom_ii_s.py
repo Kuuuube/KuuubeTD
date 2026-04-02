@@ -1,7 +1,19 @@
-import serial
-from internal_constants import SERIAL_PORT_INITIAL_BAUD_RATE, SERIAL_PORT_BYTESIZE, SERIAL_PORT_TIMEOUT, SERIAL_PORT_STOPBITS, WACOM_II_AND_II_S_RESET_COMMAND, WACOM_II_AND_II_S_PRESSURE_MODE_COMMAND, WACOM_II_AND_II_S_BINARY_MODE_COMMAND, WACOM_II_AND_II_S_INCREMENT_COMMAND, WACOM_II_AND_II_S_OPERATION_MODE_COMMAND
-from user_constants import SERIAL_PORT_PATH
 import time
+
+import serial
+from internal_constants import (
+    SERIAL_PORT_BYTESIZE,
+    SERIAL_PORT_INITIAL_BAUD_RATE,
+    SERIAL_PORT_STOPBITS,
+    SERIAL_PORT_TIMEOUT,
+    WACOM_II_AND_II_S_BINARY_MODE_COMMAND,
+    WACOM_II_AND_II_S_INCREMENT_COMMAND,
+    WACOM_II_AND_II_S_OPERATION_MODE_COMMAND,
+    WACOM_II_AND_II_S_PRESSURE_MODE_COMMAND,
+    WACOM_II_AND_II_S_RESET_COMMAND,
+)
+from user_constants import SERIAL_PORT_PATH
+
 
 def setup_wacom_ii_s(port = SERIAL_PORT_PATH, baudrate = SERIAL_PORT_INITIAL_BAUD_RATE, bytesize = SERIAL_PORT_BYTESIZE, timeout = SERIAL_PORT_TIMEOUT, stopbits = SERIAL_PORT_STOPBITS):
     serial_port = serial.Serial(port = port, baudrate = baudrate, bytesize = bytesize, timeout = timeout, stopbits = stopbits)

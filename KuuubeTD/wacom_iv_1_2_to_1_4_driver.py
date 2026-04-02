@@ -1,7 +1,8 @@
 import sys
+
+import output.wacom_iv_1_2_to_1_4
 import parsers.wacom_iv_1_2_to_1_4
 import tablet_setup.wacom_iv_1_2_to_1_4
-import output.wacom_iv_1_2_to_1_4
 import vmulti_device_handler
 from internal_constants import SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE
 

@@ -1,6 +1,11 @@
-from internal_constants import VMULTI_ID, USAGE_PAGE_DIGITIZER, OUTPUT_MODE, WACOM_II_MAX_PRESSURE
-from user_constants import PRESSURE_OFFSET, PRESSURE_DEADZONE
 import tablet_monitor_mapping
+from internal_constants import (
+    OUTPUT_MODE,
+    USAGE_PAGE_DIGITIZER,
+    VMULTI_ID,
+    WACOM_II_MAX_PRESSURE,
+)
+from user_constants import PRESSURE_DEADZONE, PRESSURE_OFFSET
 
 report = [0x00]*65
 

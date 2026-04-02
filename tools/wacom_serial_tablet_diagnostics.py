@@ -1,7 +1,8 @@
-import serial
-import time
-import serial.tools.list_ports
 import re
+import time
+
+import serial
+import serial.tools.list_ports
 
 ports = serial.tools.list_ports.comports()
 

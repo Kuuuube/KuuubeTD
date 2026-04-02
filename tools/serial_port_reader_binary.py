@@ -1,6 +1,5 @@
 import serial
 
-
 SERIAL_PORT = 'COM3'
 SERIAL_RATE = 9600
 BYTE_SIZE = 8
