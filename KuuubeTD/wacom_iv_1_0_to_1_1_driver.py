@@ -3,8 +3,7 @@ import parsers.wacom_iv_1_0_to_1_1
 import tablet_setup.wacom_iv_1_0_to_1_1
 import output.wacom_iv_1_0_to_1_1
 import vmulti_device_handler
-from internal_constants import *
-from user_constants import *
+from internal_constants import SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE
 
 vmulti_device = None
 try:

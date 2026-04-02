@@ -16,7 +16,7 @@ import tablet_setup.wacom_ii
 import sys
 import time
 import os
-from internal_constants import *
+from internal_constants import SERIAL_PORT_WACOM_V_2_0_REPORT_SIZE, SERIAL_PORT_WACOM_IVE_1_4_REPORT_SIZE, SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE, SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE, SERIAL_PORT_WACOM_II_S_REPORT_SIZE, SERIAL_PORT_WACOM_II_REPORT_SIZE
 
 ports = serial.tools.list_ports.comports()
 

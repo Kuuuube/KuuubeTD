@@ -1,5 +1,5 @@
-from internal_constants import *
-from user_constants import *
+from internal_constants import VMULTI_MONITOR_SCALING_X,VMULTI_MONITOR_OFFSET_X, VMULTI_MONITOR_SCALING_Y, VMULTI_MONITOR_OFFSET_Y, VMULTI_MONITOR_RES_X, VMULTI_MONITOR_RES_Y
+from user_constants import TABLET_MAX_X_POS, TABLET_OFFSET_X, TABLET_MAX_Y_POS, TABLET_OFFSET_Y
 
 def map_x(pos_x):
     if pos_x > TABLET_MAX_X_POS + TABLET_OFFSET_X:

@@ -1,5 +1,5 @@
 from pywinusb import hid
-from internal_constants import *
+from internal_constants import VMULTI_DEVICE_VENDOR_ID, VMULTI_DEVICE_PRODUCT_ID
 
 def find_vmulti_device():
     all_devices = hid.HidDeviceFilter(vendor_id = VMULTI_DEVICE_VENDOR_ID, product_id = VMULTI_DEVICE_PRODUCT_ID,).get_devices()

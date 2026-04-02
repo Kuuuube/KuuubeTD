@@ -1,6 +1,6 @@
 import serial
-from internal_constants import *
-from user_constants import *
+from internal_constants import SERIAL_PORT_INITIAL_BAUD_RATE, SERIAL_PORT_BYTESIZE, SERIAL_PORT_TIMEOUT, SERIAL_PORT_STOPBITS, WACOM_V_2_0_SETTINGS_COMMAND
+from user_constants import SERIAL_PORT_PATH
 import time
 
 def setup_wacom_v_2_0(port = SERIAL_PORT_PATH, baudrate = SERIAL_PORT_INITIAL_BAUD_RATE, bytesize = SERIAL_PORT_BYTESIZE, timeout = SERIAL_PORT_TIMEOUT, stopbits = SERIAL_PORT_STOPBITS):
