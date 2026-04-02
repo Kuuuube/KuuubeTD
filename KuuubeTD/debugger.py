@@ -35,7 +35,7 @@ for port in sorted(ports):
         print(re.sub(" .*", "", str(port)))
     except Exception:
         print(port)
-print("")
+print()
 
 print("Enter serial port path for tablet:")
 
@@ -73,7 +73,7 @@ if (init.lower() == "y"):
 
     elif (selected_parser == "6"):
         serial_port = tablet_setup.wacom_ii.setup_wacom_ii(port = SERIAL_PORT, baudrate = SERIAL_RATE, bytesize = BYTE_SIZE, timeout = 1, stopbits = STOPBITS)
-    
+
     else:
         print("Invalid parser selected. Valid inputs are: (1/2/3/4/5)")
         sys.exit()
@@ -82,12 +82,12 @@ else:
 
 if (selected_parser == "1"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_V_2_0_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_V_2_0_REPORT_SIZE)
 
@@ -97,19 +97,19 @@ if (selected_parser == "1"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity:" + str(report_parsed[0]) + " Pointer:" + str(report_parsed[1]) + " Button_Flag:" + str(report_parsed[2]) + " Position:[" + str(report_parsed[3]) + "," + str(report_parsed[4]) + "] Buttons:" + str(report_parsed[5]) + " Pressure:" + str(report_parsed[6]) + " Tilt:[" + str(report_parsed[7]) + ","  +  str(report_parsed[8]) + "]")
-            
+
         except Exception as e:
             print(e)
             time.sleep(0.1)
 
 if (selected_parser == "2"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_IVE_1_4_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_IVE_1_4_REPORT_SIZE)
 
@@ -119,19 +119,19 @@ if (selected_parser == "2"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity:" + str(report_parsed[0]) + " Pointer:" + str(report_parsed[1]) + " Button_Flag:" + str(report_parsed[2]) + " Position:[" + str(report_parsed[3]) + "," + str(report_parsed[4]) + "] Buttons:" + str(report_parsed[5]) + " Pressure:" + str(report_parsed[6]) + " Tilt:[" + str(report_parsed[7]) + ","  +  str(report_parsed[8]) + "]")
-            
+
         except Exception as e:
             print(e)
             time.sleep(0.1)
 
 elif (selected_parser == "3"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE)
 
@@ -141,19 +141,19 @@ elif (selected_parser == "3"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity: " + str(report_parsed[0]) + ", Pointer: " + str(report_parsed[1]) + ", Button Flag: " + str(report_parsed[2]) + ", Pos X: " + str(report_parsed[3]) + ", Pos Y: " + str(report_parsed[4]) + ", Buttons: " + str(report_parsed[5]) + ", Pressure: " + str(report_parsed[6]))
-            
+
         except Exception as e:
             print(e)
             time.sleep(0.1)
 
 elif (selected_parser == "4"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_IV_1_0_TO_1_1_REPORT_SIZE)
 
@@ -163,19 +163,19 @@ elif (selected_parser == "4"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity: " + str(report_parsed[0]) + ", Pointer: " + str(report_parsed[1]) + ", Button Flag: " + str(report_parsed[2]) + ", Pos X: " + str(report_parsed[3]) + ", Pos Y: " + str(report_parsed[4]) + ", Buttons: " + str(report_parsed[5]) + ", Pressure: " + str(report_parsed[6]))
-            
+
         except Exception as e:
             print(e)
             time.sleep(0.1)
 
 elif (selected_parser == "5"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_II_S_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_II_S_REPORT_SIZE)
 
@@ -185,19 +185,19 @@ elif (selected_parser == "5"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity: " + str(report_parsed[0]) + ", Pointer: " + str(report_parsed[1]) + ", Pos X: " + str(report_parsed[2]) + ", Pos Y: " + str(report_parsed[3]) + ", Buttons: " + str(report_parsed[4]) + ", Button Flag: " + str(report_parsed[5]) + ", Pressure: " + str(report_parsed[6]))
-        
+
         except Exception as e:
             print(e)
             time.sleep(0.1)
 
 elif (selected_parser == "6"):
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
     print("Parser data:\n")
 
     while (True):
         try:
-            report = bytes(b"")
+            report = b""
             while (len(report) != (SERIAL_PORT_WACOM_II_REPORT_SIZE)):
                 report = serial_port.read(SERIAL_PORT_WACOM_II_REPORT_SIZE)
 
@@ -207,7 +207,7 @@ elif (selected_parser == "6"):
             sys.stdout.write("\033[K") # Remove the previously printed line
 
             print("Proximity: " + str(report_parsed[0]) + ", Pointer: " + str(report_parsed[1]) + ", Pos X: " + str(report_parsed[2]) + ", Pos Y: " + str(report_parsed[3]) + ", Buttons: " + str(report_parsed[4]) + ", Button Flag: " + str(report_parsed[5]) + ", Pressure: " + str(report_parsed[6]))
-        
+
         except Exception as e:
             print(e)
             time.sleep(0.1)

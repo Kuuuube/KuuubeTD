@@ -24,7 +24,7 @@ except Exception as e:
     sys.exit()
 
 while(True):
-    report = bytes(b"")
+    report = b""
     while (len(report) != (SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE)):
         report = serial_port.read(SERIAL_PORT_WACOM_IV_1_2_TO_1_4_REPORT_SIZE)
 

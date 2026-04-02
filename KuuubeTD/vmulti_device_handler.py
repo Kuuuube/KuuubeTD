@@ -2,7 +2,7 @@ from internal_constants import VMULTI_DEVICE_PRODUCT_ID, VMULTI_DEVICE_VENDOR_ID
 from pywinusb import hid
 
 
-def find_vmulti_device():
+def find_vmulti_device():  # noqa: ANN201
     all_devices = hid.HidDeviceFilter(vendor_id = VMULTI_DEVICE_VENDOR_ID, product_id = VMULTI_DEVICE_PRODUCT_ID,).get_devices()
 
     if len(all_devices) > 0:
@@ -15,4 +15,7 @@ def find_vmulti_device():
                 device.close()
 
     else:
-        raise Exception("Virtual Multitouch Device driver not loaded.")
+        msg = "Virtual Multitouch Device driver not loaded."
+        raise Exception(msg)
+
+    return None

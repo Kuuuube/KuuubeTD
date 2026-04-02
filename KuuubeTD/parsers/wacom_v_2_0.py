@@ -1,4 +1,4 @@
-def wacom_v_2_0_parser(report):
+def wacom_v_2_0_parser(report: bytes) -> (bool, bool, bool, int, int, int, int, int, int):
     pos_x = (((int(report[1]) & 0x7f) <<  9) + ((int(report[2]) & 0x7f) << 2) + ((int(report[3]) & 0x60) >> 5))
 
     pos_y = (((int(report[3]) & 0x1f) << 11) + ((int(report[4]) & 0x7f) << 4) + ((int(report[5]) & 0x78) >> 3))

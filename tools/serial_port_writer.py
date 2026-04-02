@@ -7,13 +7,13 @@ SERIAL_RATE = 9600
 BYTE_SIZE = 8
 STOPBITS = 1
 
-def send_command(command, command_name):
+def send_command(command: str, command_name: str) -> None:
     serial_port.write((command + "\r").encode())
     while True:
         output = serial_port.readline()
         if (output != b""):
             print(command_name + ": ", end="")
-            print(output.decode('utf-8'))
+            print(output.decode("utf-8"))
         else:
             break
     time.sleep(0.2)

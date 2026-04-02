@@ -3,9 +3,21 @@ ignore = [
     "EXE002",
     "D100",
     "INP001",
+    "E501",
+    "PLR0913",
+    "D103",
+    "ERA001",
+    "A002",
+    "BLE001",
+    "T201",
+    "TRY002",
+    "TRY003",
+    "FBT001",
+    "COM819",
 ]
 
 [lint.per-file-ignores]
-"logger.py" = []
-"./tests/*" = []
-"./tools/*" = []
+"./KuuubeTD/debugger.py" = [
+    "PERF203",
+    "S605",
+]

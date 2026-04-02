@@ -12,7 +12,7 @@ from internal_constants import (
 from user_constants import SERIAL_PORT_PATH
 
 
-def setup_wacom_iv_1_0_to_1_1(port = SERIAL_PORT_PATH, baudrate = SERIAL_PORT_INITIAL_BAUD_RATE, bytesize = SERIAL_PORT_BYTESIZE, timeout = SERIAL_PORT_TIMEOUT, stopbits = SERIAL_PORT_STOPBITS):
+def setup_wacom_iv_1_0_to_1_1(port: str = SERIAL_PORT_PATH, baudrate: int = SERIAL_PORT_INITIAL_BAUD_RATE, bytesize: int = SERIAL_PORT_BYTESIZE, timeout: int = SERIAL_PORT_TIMEOUT, stopbits: int = SERIAL_PORT_STOPBITS) -> serial.Serial:
     serial_port = serial.Serial(port = port, baudrate = baudrate, bytesize = bytesize, timeout = timeout, stopbits = stopbits)
 
     print("Setting up tablet, please wait. Do not put the pen on the tablet.")

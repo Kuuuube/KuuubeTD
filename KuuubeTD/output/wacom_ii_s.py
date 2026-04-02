@@ -9,7 +9,7 @@ from user_constants import PRESSURE_DEADZONE, PRESSURE_OFFSET
 
 report = [0x00]*65
 
-def send_vmulti_report_wacom_ii_s(vmulti_device_report, proximity, pointer, pos_x, pos_y, buttons, button_flag, pressure):
+def send_vmulti_report_wacom_ii_s(vmulti_device_report, proximity: bool, pointer: bool, pos_x: int, pos_y: int, buttons: int, button_flag: bool, pressure: int) -> None:  # noqa: ANN001
     pressure = pressure + PRESSURE_OFFSET
     if pressure <= PRESSURE_DEADZONE or pressure < 0:
         pressure = 0
@@ -20,17 +20,17 @@ def send_vmulti_report_wacom_ii_s(vmulti_device_report, proximity, pointer, pos_
 
     flags = 0
     if (pointer or button_flag):
-        if (bool((buttons & 0x01))): # pen tip
-            flags = flags | int(0x01) # pen tip
+        if (bool(buttons & 0x01)): # pen tip
+            flags = flags | 0x01 # pen tip
 
         if (pressure > 1): # pen tip
-            flags = flags | int(0x01) # pen tip
+            flags = flags | 0x01 # pen tip
     else:
         # mouse buttons are not implemented
         pass
-    
+
     if (proximity):
-        flags = flags | int(0x10)
+        flags = flags | 0x10
 
     report[3] = flags
 

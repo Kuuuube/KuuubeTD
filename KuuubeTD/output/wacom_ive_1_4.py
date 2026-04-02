@@ -10,7 +10,7 @@ from user_constants import PRESSURE_DEADZONE, PRESSURE_OFFSET
 
 report = [0x00]*65
 
-def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, button_flag, pos_x, pos_y, buttons, pressure, tilt_x, tilt_y):    
+def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity: bool, pointer: bool, button_flag: bool, pos_x: int, pos_y: int, buttons: int, pressure: int, tilt_x: int, tilt_y: int) -> None:  # noqa: ANN001
     pressure = pressure + PRESSURE_OFFSET
     if pressure <= PRESSURE_DEADZONE or pressure < 0:
         pressure = 0
@@ -22,23 +22,23 @@ def send_vmulti_report_wacom_ive_1_4(vmulti_device_report, proximity, pointer, b
     flags = 0
     if (button_flag):
         if (pointer):
-            if (bool((buttons & 0x01))): # pen tip
-                flags = flags | int(0x01) # pen tip
+            if (bool(buttons & 0x01)): # pen tip
+                flags = flags | 0x01 # pen tip
 
-            if (bool((buttons & 0x02))): # bottom pen button
-                flags = flags | int(0x02) # barrel button
+            if (bool(buttons & 0x02)): # bottom pen button
+                flags = flags | 0x02 # barrel button
 
             #if (bool((buttons & 0x04))): # top pen button
             #    flags = flags | int(0x02) # barrel button
 
-            if (bool((buttons & 0x04))): # eraser
-                flags = flags | int(0x08) # invert
+            if (bool(buttons & 0x04)): # eraser
+                flags = flags | 0x08 # invert
         else:
             # tablet and mouse buttons are not implemented
             pass
-    
+
     if (proximity):
-        flags = flags | int(0x10)
+        flags = flags | 0x10
 
     report[3] = flags
 
